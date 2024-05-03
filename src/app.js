@@ -35,14 +35,14 @@ app.post("/index.html", (req, res) => {
   const jsonData = JSON.stringify(data);
 
 axios
-  .post(`https://us18.api.mailchimp.com/3.0/lists/${process.env.ID}`, {
+  .post(`https://us18.api.mailchimp.com/3.0/lists/${process.env.VITE_ID}`, {
     method: "POST",
-    auth: `narniano:${process.env.KEY}`,
+    auth: `narniano:${process.env.VITE_KEY}`,
   })
   .then(function () {
-    res.sendFile(__dirname + "/sucess.html")
+    res.sendFile(__dirname + "sucess.html")
     .catch(function (error) {
-      res.sendFile(__dirname + "/failure.html");
+      res.sendFile(__dirname + "failure.html");
     });
   });
 });
