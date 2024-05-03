@@ -40,9 +40,9 @@ axios
     auth: `narniano:${process.env.VITE_KEY}`,
   })
   .then(function () {
-    res.sendFile(__dirname + "sucess.html")
+    res.sendFile(__dirname + "public/sucess.html")
     .catch(function (error) {
-      res.sendFile(__dirname + "failure.html");
+      res.sendFile(__dirname + "public/failure.html");
     });
   });
 });
