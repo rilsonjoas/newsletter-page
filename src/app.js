@@ -35,18 +35,13 @@ app.post("/index.html", (req, res) => {
   const jsonData = JSON.stringify(data);
 
 axios
-  .post(`https://us18.api.mailchimp.com/3.0/lists/${process.env.VITE_ID}`, {
-    method: "POST",
-    auth: `narniano:${process.env.VITE_KEY}`,
-  })
-  .then(function () {
-    res.sendFile(__dirname + "public/sucess.html")
-    .catch(function (error) {
-      res.sendFile(__dirname + "public/failure.html");
+  .post(`https://us18.api.mailchimp.com/3.0/lists/${process.env.VITE_KEY}`, {jsonData})
+  .then((res) => {
+    console.log(res)
+    // res.sendFile(__dirname + "public/sucess.html")
+    .catch((err) => {
+      console.log(err);
+      // res.sendFile(__dirname + "public/failure.html");
     });
   });
-});
-
-app.listen(process.env.PORT || 3000, function () {
-  console.log("A porta 3000 está funcionando.");
 });
